@@ -1,0 +1,49 @@
+\documentclass[12pt, a4paper, bahasa]{article}
+
+\usepackage[margin=2.5cm]{geometry} 
+\usepackage{fancyhdr}               
+\usepackage{hyperref}               
+\usepackage{graphicx}               
+\usepackage{float}                  
+\usepackage{titlesec}
+\usepackage{wrapfig}         
+\usepackage{subcaption}
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage[
+    backend=biber,
+    style=ieee,
+    language=auto,
+    autolang=other
+]{biblatex}
+
+\addbibresource{refs.bib}
+
+% Pengaturan Header dan Footer
+\pagestyle{fancy}
+\fancyfoot[C]{\thepage}
+\lhead{\textbf{Nama:} Khalilullah Al Faath}   
+\rhead{\textbf{NIM:} 25/566643/PPA/07139}        
+\renewcommand{\headrulewidth}{0.4pt}         
+\renewcommand{\footrulewidth}{0.4pt}
+
+\renewcommand{\tablename}{Tabel}
+\renewcommand{\figurename}{Gambar}
+
+\pagenumbering{arabic}
+\begin{document}
+
+\begin{center}
+    \large \textbf{Judul Laporan} \\[0.2cm]
+    \large Nama Mata Kuliah  \\[0.5cm]
+\end{center}
+
+
+\section{Pranala Kode}
+Hasil \textit{running} implementasi kode dapat diakses di pranala repositori GitHub berikut \url{} \cite{klir_fuzzy_1995}.
+
+\section{Referensi}
+\printbibliography[heading=none]
+
+
+\end{document}
