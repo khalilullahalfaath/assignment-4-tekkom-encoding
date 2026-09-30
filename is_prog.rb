@@ -1,46 +1,4 @@
 # is_prog.rb -- Problem 4.3
-#
-# isProg(x1) = 1 jika x1 adalah kode (encoding) dari sebuah GOTO program yang
-# well-formed, 0 jika bukan. TOTAL (harus selalu berhenti dan menjawab 0/1).
-#
-# Skema encoding GOTO program (Lect04 Slide 27-28):
-#   enc(L1:S1;...;Ln:Sn) = enc((k, m, enc(S1), ..., enc(Sn)))
-#   enc(xi:=xi+1)          = enc((1,i))
-#   enc(xi:=xi-1)          = enc((2,i))
-#   enc(GOTO Lj)           = enc((3,j))
-#   enc(IF xi=0 THEN GOTO Lj) = enc((4,i,j))
-#   enc(HALT)              = enc((5))
-#
-# DESAIN WHILE PROGRAM (dijelaskan lengkap di laporan PDF):
-#   1) Jika x1 bukan enc(list) valid (isList(x1)=0)         -> x0 := 0
-#   2) n_total := len(x1); jika n_total < 3 (tak ada k,m,>=1 statement) -> x0:=0
-#      (n := n_total - 2 = banyak statement)
-#   3) bad := 0
-#      Untuk t = 1..n (LOOP n kali, terhitung dari nilai n yang sudah tetap
-#      begitu langkah 2 selesai -- sesuai skema LOOP program Lect03):
-#        - IF bad = 0 THEN   (guard "early exit" ala WHILE, lihat Lect02 Slide 34-35)
-#            stmt := elem(x1, t+2)
-#            IF isList(stmt) = 0 THEN bad := 1
-#            ELSE
-#              slen := len(stmt); op := elem(stmt,1)
-#              -- cocokkan op & slen & (jika perlu) batas target lompatan 1..n,
-#                 sesuai tabel opcode di atas; jika tidak cocok, bad := 1
-#            END
-#          END
-#   4) x0 := 1 jika bad = 0, selain itu x0 := 0
-#
-# Catatan desain (karena spesifikasi soal tidak merincinya secara eksplisit):
-#  - Indeks variabel i pada opcode 1/2/4 boleh sembarang bilangan asli (>=0,
-#    termasuk x0), karena tata bahasa GOTO (Lect03 Slide 22) tidak membatasi
-#    variabel mana yang boleh dipakai.
-#  - Target lompatan j pada opcode 3/4 KAMI WAJIBKAN 1<=j<=n (label tersebut
-#    harus benar-benar ada di program itu) -- ini agar "GOTO ke label yang
-#    tidak ada" dianggap TIDAK valid, sesuai gagasan "kode dari GOTO program
-#    yang well-formed".
-#  - Tidak disyaratkan adanya HALT di posisi tertentu (atau sama sekali),
-#    karena tata bahasa (Lect03 Slide 21-22) hanya mensyaratkan setiap Si
-#    adalah salah satu dari lima bentuk statement, tanpa aturan tambahan
-#    soal urutan/keharusan HALT.
 
 require_relative 'enc_helpers'
 

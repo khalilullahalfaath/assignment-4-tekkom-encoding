@@ -1,31 +1,4 @@
 # enc_helpers.rb
-#
-# Blok bangunan yang SUDAH terbukti WHILE-computable di Lecture 4 (Encoding):
-#   pi   -- fungsi pemasangan Cantor            (Slide 13)
-#   fst  -- decoding komponen pertama dari pi   (Slide 14-15)
-#   snd  -- decoding komponen kedua dari pi     (Slide 14-15)
-#   isList -- cek apakah suatu bilangan adalah enc(list) yang valid (Slide 34-35)
-#   len  -- panjang list (parsial: infloop jika bukan enc(list) valid) (Slide 36)
-#   elem -- elemen ke-i dari list (parsial) (Slide 37)
-#
-# Fungsi-fungsi ini dipakai sebagai "subrutin" (syntax sugar pemanggilan fungsi,
-# Lect02 Slide 33) oleh replace (Problem 4.2) dan isProg (Problem 4.3), sesuai
-# hint pada soal ("You may first implement some other functions introduced in
-# the class").
-#
-# Catatan implementasi fst/snd: di kelas, fst/snd dibangun lewat BRUTE-FORCE
-# (dua LOOP bersarang mencoba semua pasangan (a,b) sampai ketemu yang cocok).
-# Itulah bukti WHILE-computability-nya. Karena brute-force jadi sangat lambat
-# untuk bilangan sebesar enc(program GOTO) (bisa puluhan digit, Lect04 Slide 32),
-# implementasi Ruby di bawah memakai RUMUS TERTUTUP yang secara matematis
-# MENGHITUNG FUNGSI YANG SAMA PERSIS (bukan fungsi berbeda) -- hanya lebih
-# cepat untuk dijalankan sungguhan. Status WHILE-computable fst/snd sendiri
-# tidak perlu dibuktikan ulang di sini karena sudah menjadi hasil kelas.
-#
-# Satu prinsip desain yang dipegang konsisten di seluruh file ini: TIDAK ADA
-# array/hash yang dipakai sebagai struktur data utama. Satu-satunya "struktur
-# data" yang tersedia untuk WHILE program adalah bilangan asli itu sendiri
-# (lewat enc/pi) -- persis seperti keterbatasan WHILE program yang sesungguhnya.
 
 UNDEFINED = :undefined # penanda "tidak terdefinisi" == WHILE program infloop
 

@@ -1,25 +1,4 @@
 # replace.rb -- Problem 4.2
-#
-# replace(x1,x2,x3): untuk list a=(a1,...,an) dengan enc(a)=x1, jika 1<=x2<=n,
-# hasilnya enc(a1,...,a_{x2-1}, x3, a_{x2+1},...,an); tidak terdefinisi jika
-# 1<=x2<=n tidak dipenuhi (termasuk jika x1 sendiri bukan enc(list) yang valid).
-#
-# DESAIN WHILE PROGRAM (dijelaskan lengkap di laporan PDF):
-#   1) n := len(x1)                     -- infloop jika x1 bukan enc(list) valid
-#   2) jika x2 < 1 atau x2 > n -> infloop
-#   3) Kupas x1 sebanyak (x2-1) kali lewat snd. Setiap kepala yang terkupas
-#      (nilai fst mentah, sudah "+1") DITUMPUK (push) ke variabel `stack`,
-#      yaitu sebuah encoding list LAIN yang dibangun dengan pi yang sama --
-#      berfungsi sebagai stack LIFO. Ini kunci penyelesaiannya: WHILE program
-#      tidak punya array, tapi enc/pi sendiri sudah cukup untuk jadi struktur
-#      data (baik untuk MEMBACA x1 maupun untuk MENYIMPAN sementara).
-#   4) e sekarang = enc((a_x2,...,an)). Buang kepalanya (elemen lama di posisi
-#      x2), ambil tail := snd(e) = enc((a_{x2+1},...,an)).
-#   5) newList := pi(x3+1, tail)  -- yaitu enc((x3, a_{x2+1},...,an))
-#   6) Pop stack satu per satu; tiap pop di-"cons"-kan (pi) ke depan newList.
-#      Karena pop LIFO membalik urutan push, a1,...,a_{x2-1} terpasang lagi
-#      dengan urutan asli yang benar.
-#   7) x0 := newList
 
 require_relative 'enc_helpers'
 
